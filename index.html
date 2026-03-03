@@ -93,3 +93,161 @@ function unDo(){
     /* 2. Update the text back to the original message */
     document.getElementById('image').innerHTML = "Hover over an image below to display here.";
 }
+body {
+font-family: "Times New Roman", Times, serif;
+background-color: #f9f9f9;
+color: #333;
+line-height: 1.6;
+margin: 0;
+padding: 20px;
+}
+
+/* Striking Red Headlines /
+h1 {
+color: #b00000; / Deep Professional Red */
+text-align: center;
+font-size: 3rem;
+text-transform: uppercase;
+border-bottom: 4px solid #b00000;
+padding-bottom: 10px;
+margin-bottom: 50px;
+}
+
+h2 {
+color: #b00000;
+border-left: 5px solid #b00000;
+padding-left: 15px;
+margin-top: 0;
+}
+
+/* Advanced Grid Layout /
+.portfolio-container {
+display: grid;
+/ This creates 3 equal columns that adjust automatically */
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 30px;
+max-width: 1200px;
+margin: 0 auto;
+}
+
+/* Content Cards /
+.content-card {
+background: white;
+padding: 25px;
+border: 1px solid #ddd;
+border-radius: 10px;
+box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+transition: all 0.3s ease; / Smooth animation */
+}
+
+/* Hover Effect for Professional Touch */
+.content-card:hover {
+transform: translateY(-10px);
+border-color: #b00000;
+box-shadow: 0 10px 25px rgba(176, 0, 0, 0.2);
+}
+
+/* Links Styling */
+a {
+color: #b00000;
+text-decoration: none;
+font-weight: bold;
+}
+
+a:hover {
+text-decoration: underline;
+} <h1>My Language & Tech Portfolio</h1>
+
+<div class="portfolio-container">
+<div class="content-card">
+    <h2>Google Blogger Vault</h2>
+    <p>Expert insights on language acquisition, cultural shocks, and polyglot psychology.</p>
+    <ul>
+        <li><a href="https://funandinterestinglearn.blogspot.com/2025/10/from-cartoons-to-conversation-my.html">My Language Journey</a></li>
+        <li><a href="https://funandinterestinglearn.blogspot.com/2025/10/everything-you-should-know-about-serbia.html">Discover Serbia</a></li>
+        <li><a href="https://funandinterestinglearn.blogspot.com/2025/10/la-lingua-della-passione-perche.html">Italian Passion (IT)</a></li>
+        </ul>
+</div>
+<div class="content-card">
+    <h2>Turkish & Serbian Academy</h2>
+    <p>Interactive video lessons and playlists for fast-track learning.</p>
+    <ul>
+        <li><a href="https://www.youtube.com/playlist?list=PLVnag7rRuuY07LZ6QV9Oaraw6C2jnGTjI">Turkish Lessons Portfolio</a></li>
+        <li><a href="https://www.youtube.com/watch?v=0hkNE9PSixM&list=PLVnag7rRuuY2vB9QrsMXAbBOguOhWq9m8">Serbian for Beginners</a></li>
+        <li><a href="https://www.youtube.com/watch?v=sSet-cqY9J4&list=PLVnag7rRuuY3eS1i3JaLHEA8SWE5Kxw6z">Cultural Insights</a></li>
+    </ul>
+</div>
+<div class="content-card">
+    <h2>Professional Credentials</h2>
+    <p>italki publications and verified industry certifications.</p>
+    <ul>
+        <li><a href="https://www.italki.com/en/post/DjAUvZgEcHSNZP2XLX2R4c">Polyglot Strategy on italki</a></li>
+        <li><strong>Google AI Professional Certificate</strong></li>
+        <li><strong>UC Davis Web Design (In Progress)</strong></li>
+        <li><strong>Google Digital Marketing Specialist</strong></li>
+    </ul>
+</div>
+</div>
+function upDate(previewPic){
+/* 1. Check if the event is triggering (Check your Console!) */
+console.log("Mouse is over: ", previewPic.alt);
+console.log("Source: ", previewPic.src);
+
+/* 2. Change the text of the div with id='image' to the alt text of the preview image */
+document.getElementById('image').innerHTML = previewPic.alt;
+/* 3. Change the background image of the div with id='image' to the source of the preview image */
+document.getElementById('image').style.backgroundImage = "url('" + previewPic.src + "')";
+} function unDo(){
+/* 1. Update the background image back to the original (empty) */
+document.getElementById('image').style.backgroundImage = "url('')";
+
+/* 2. Update the text back to the original message */
+document.getElementById('image').innerHTML = "Hover over an image below to display here.";
+}
+/* --- STEP 1: The 'onload' Function to add Tab Index --- */
+function initializeGallery() {
+    console.log("Gallery initialized - Adding tabindex to all images.");
+    
+    // Get all elements with the class 'preview'
+    let images = document.querySelectorAll(".preview");
+
+    // Loop through each image and add tabindex="0"
+    for (let i = 0; i < images.length; i++) {
+        images[i].setAttribute("tabindex", "0");
+        console.log("Added tabindex to image " + (i + 1));
+    }
+}
+
+/* --- STEP 2: The Interactive Functions --- */
+function upDate(previewPic) {
+    console.log("Updating image: " + previewPic.alt);
+    let displayDiv = document.getElementById("image");
+    
+    // Update background image and text
+    displayDiv.style.backgroundImage = "url('" + previewPic.src + "')";
+    displayDiv.innerHTML = previewPic.alt;
+}
+
+function unDo() {
+    console.log("Resetting image.");
+    let displayDiv = document.getElementById("image");
+    
+    // Reset to original values
+    displayDiv.style.backgroundImage = "url('')";
+    displayDiv.innerHTML = "Hover over an image below to display here.";
+}
+        <body onload="initializeGallery()">
+
+    <div id="image">
+        Hover over an image below to display here.
+    </div>
+
+    <img class="preview" 
+         alt="Turkish Lesson - Grammar Basics" 
+         src="your-turkish-image.jpg" 
+         onmouseover="upDate(this)" 
+         onmouseleave="unDo()" 
+         onfocus="upDate(this)" 
+         onblur="unDo()">
+
+    </body>
