@@ -251,3 +251,110 @@ function unDo() {
          onblur="unDo()">
 
     </body>
+        <main>
+    <figure>
+        <img src="serbian.jpg" alt="Serbian grammar and cultural insights">
+        <figcaption>Explore the heart of the Balkans with expert Serbian lessons.</figcaption>
+    </figure>
+
+    <figure>
+        <img src="turkish.jpg" alt="Turkish language vowel harmony chart">
+        <figcaption>Master Turkish from Vowel Harmony to fluent conversation.</figcaption>
+    </figure>
+
+    <figure>
+        <img src="arabic.jpg" alt="Arabic calligraphy and learning journey">
+        <figcaption>My personal journey through the complexities of Arabic.</figcaption>
+    </figure>
+
+    <figure>
+        <img src="italian.jpg" alt="Italian language and cultural shocks in the Balkans">
+        <figcaption>Bridging Italian passion with Balkan cultural nuances.</figcaption>
+    </figure>
+
+    <figure>
+        <img src="polyglot.jpg" alt="The psychology of learning multiple languages">
+        <figcaption>Strategies for managing a journey across 9+ languages.</figcaption>
+    </figure>
+</main>                                                                                                                                                                                                                      /* --- 1. MOBILE-FIRST (Default Styles) --- */
+body {
+    font-family: "Times New Roman", Times, serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 10px;
+    scroll-behavior: smooth; /* Will be removed in reduced-motion */
+}
+
+h1 { color: #b00000; text-align: center; }
+
+/* Mobile Grid: One Column */
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+figure {
+    border: 2px solid #b00000;
+    padding: 15px;
+    margin: 0;
+    background-color: #fff;
+}
+
+img { width: 100%; height: auto; }
+
+/* --- 2. TABLET VIEW (772px) --- */
+@media screen and (min-width: 772px) {
+    main {
+        grid-template-columns: 1fr 1fr; /* Two columns */
+    }
+
+    figure {
+        border-radius: 50%; /* Circular shape */
+        aspect-ratio: 1 / 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    /* Last figure takes up both columns */
+    figure:last-child {
+        grid-column: span 2;
+        border-radius: 50px; /* Adjusting for span */
+    }
+}
+
+/* --- 3. LARGE SCREEN VIEW (992px) --- */
+@media screen and (min-width: 992px) {
+    main {
+        grid-template-columns: 1fr 1fr; 
+    }
+
+    figure {
+        border-radius: 0; /* Remove border radius */
+        aspect-ratio: auto;
+    }
+
+    /* Every third figure takes up both columns */
+    figure:nth-child(3n) {
+        grid-column: span 2;
+    }
+}
+
+/* --- 4. PREFERS-REDUCED-MOTION --- */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        scroll-behavior: auto !important;
+        transition: none !important;
+    }
+}
+
+/* --- 5. DARK MODE PREFERENCE --- */
+@media (prefers-color-scheme: dark) {
+    figure {
+        background-color: #2c3e50; /* Dark color */
+        color: #f1c40f; /* Yellow-ish font */
+        border-color: #000000; /* Black border */
+    }
+}
